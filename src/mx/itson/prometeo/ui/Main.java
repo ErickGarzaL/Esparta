@@ -215,17 +215,17 @@ public class Main extends javax.swing.JFrame {
                 dato.getArticulos().sort((mov1, mov2) -> mov1.getNombre().compareTo(mov2.getNombre()));
 
                 double Monto=0;
-                double subtotal =0;
+                double total =0;
                 for(Articulo d: dato.getArticulos()){
 
                     if(d.getDescuento() == Descuento.APLICA){
-                        subtotal +=  d.getPrecio();
+                        total +=  d.getPrecio();
 
-                        modeloArticulos.addRow(new Object[]  {d.getNombre(), formatomoneda.format(d.getPrecio()), formatomoneda.format(d.getIva() ), d.getDescuento(), formatomoneda.format(subtotal) });
+                        modeloArticulos.addRow(new Object[]  {d.getNombre(), formatomoneda.format(d.getPrecio()), formatomoneda.format(d.getIva() ), d.getDescuento(), formatomoneda.format(total) });
 
                     }else if (d.getDescuento() == Descuento.______){
-                        subtotal +=  d.getPrecio();
-                        modeloArticulos.addRow(new Object[]  {d.getNombre(), formatomoneda.format(d.getPrecio()), formatomoneda.format(d.getIva()), d.getDescuento(),  formatomoneda.format(subtotal)});
+                        total +=  d.getPrecio();
+                        modeloArticulos.addRow(new Object[]  {d.getNombre(), formatomoneda.format(d.getPrecio()), formatomoneda.format(d.getIva()), d.getDescuento(),  formatomoneda.format(total)});
 
                     }
 
@@ -243,10 +243,10 @@ public class Main extends javax.swing.JFrame {
 
                     });
 
-                    modeloCliente.addRow(new Object[]  { "MONTO A PAGAR "+ formatomoneda.format(subtotal +dato.getCliente().getRecarga() )
+                    modeloCliente.addRow(new Object[]  { "MONTO A PAGAR "+ formatomoneda.format(total +dato.getCliente().getRecarga() )
 
                     });
-                    modeloCliente.addRow(new Object[]  { "CAMBIO : "+ formatomoneda.format(dato.getCliente().getEfectivo()-subtotal+ dato.getCliente().getRecarga() )
+                    modeloCliente.addRow(new Object[]  { "CAMBIO : "+ formatomoneda.format(dato.getCliente().getEfectivo()-total+ dato.getCliente().getRecarga() )
 
                     });
 
